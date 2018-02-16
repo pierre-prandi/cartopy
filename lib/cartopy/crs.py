@@ -1595,6 +1595,18 @@ class Robinson(_WarpedRectangularProjection):
         return result
 
 
+class KavrayskiyVII(_WarpedRectangularProjection):
+    def __init__(self, central_longitude=0, globe=None):
+        proj4_params = [('proj', 'kav7'), ('lon_0', central_longitude)]
+        super(KavrayskiyVII, self).__init__(
+            proj4_params,
+            central_longitude,
+            globe=globe)
+
+    @property
+    def threshold(self):
+        return 1e4
+
 class InterruptedGoodeHomolosine(Projection):
     def __init__(self, central_longitude=0, globe=None):
         proj4_params = [('proj', 'igh'), ('lon_0', central_longitude)]
